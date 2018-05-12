@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<body>
+<header>
+<head>
+  <title><%= title %></title>
+  <meta charset="UTF-8"/>
+	<link rel="stylesheet" href="stylesheets/bootstrap.min.css" media="screen">
+	<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+
+  <style type="text/css">
+    body,html{height:100%;background-color: rgb(246,246,246);}
+
+    .panels {
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      width:1000px;
+      margin: auto;
+      position: absolute;
+      top: 175px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      box-shadow: #6666 0px 0px 5px;
+      background: white;
+    }
+    .he {
+      background-color:white;
+      color:white;
+      position:fixed;
+      width:100%;
+      height: 75px;
+      line-height: 5%;
+      top:0px;
+      left: 0px;
+      text-align:right;
+      z-index:999;
+      box-shadow: #6666 0px 0px 5px;
+    }
+    .ti{
+      font-weight: 300;
+    	font-size: 3.5em;
+    	padding-top: 0.75em;
+    	text-align:center;
+    	color:rgb(60,133,247);
+    }
+    .lr{
+      font-weight: 325;
+    	font-size: 1.2em;
+    	color:rgb(60,133,247);
+    	padding:0.3em;
+    }
+    </style>
+
+    <div class="he">
+      <p class="ti"><%= title %></p>
+      <a id="headlogin" class="lr" onclick="Loginfunction()">Login</a>
+      <a id="headregister" class="lr" onclick="Registerfunction()">Register</a>
+      <a class="lr" href="/home">Home</a>
+      <a class="lr" href="/logout">Logout</a>
+    </div>
+
+  </head>
+</header>

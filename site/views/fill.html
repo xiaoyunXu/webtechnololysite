@@ -1,0 +1,130 @@
+<%- include header %>
+
+  <link rel="stylesheet" href="stylesheets/styleFill.css" media="screen">
+  <body>
+    <div class="panels">
+
+      <div class="titlf">
+        <h1 class="titlfnot">Please choose your options!</h1>
+      </div>
+
+    <div class='nav'>
+      <ul>
+        <li class='plug-pop' data-pop='event:click;time:300;class:active;trigger:.nav-list-1'>
+          <p>Question1</p>
+          <div class='nav-list-1'>
+            <p><%= r[0].question %></p>
+            <input type="radio" id="check1q1" name="check1" value="1">  <%= r[0].option1 %><br>
+            <input type="radio" id="check1q2" name="check1" value="2">  <%= r[0].option2 %><br>
+            <input type="radio" id="check1q3" name="check1" value="3">  <%= r[0].option3 %><br>
+            <input type="radio" id="check1q4" name="check1" value="4">  <%= r[0].option4 %><br>
+          </div>
+        </li>
+        <li class='plug-pop' data-pop='event:click;time:300;class:active;trigger:.nav-list-2'>
+          <p>Question2</p>
+          <div class='nav-list-2'>
+            <p><%= r[1].question %></p>
+            <input type="radio" id="check2q1" name="check2" value="1">  <%=r[1].option1 %><br>
+            <input type="radio" id="check2q2" name="check2" value="2">  <%=r[1].option2 %><br>
+            <input type="radio" id="check2q3" name="check2" value="3">  <%=r[1].option3 %><br>
+            <input type="radio" id="check2q4" name="check2" value="4">  <%=r[1].option4 %><br>
+          </div>
+        </li>
+        <li class='plug-pop' data-pop='event:click;time:300;class:active;trigger:.nav-list-3'>
+          <p>Question3</p>
+          <div class='nav-list-3'>
+            <p><%= r[2].question %></p>
+            <input type="radio" id="check3q1" name="check3" value="1">  <%= r[2].option1 %><br>
+            <input type="radio" id="check3q2" name="check3" value="2">  <%= r[2].option2 %><br>
+            <input type="radio" id="check3q3" name="check3" value="3">  <%= r[2].option3 %><br>
+            <input type="radio" id="check3q4" name="check3" value="4">  <%= r[2].option4 %><br>
+          </div>
+        </li>
+        <li class='plug-pop' data-pop='event:click;time:300;class:active;trigger:.nav-list-4'>
+          <p>Question4</p>
+          <div class='nav-list-4'>
+            <p><%= r[3].question %></p>
+            <input type="radio" id="check4q1" name="check4" value="1">  <%= r[3].option1 %><br>
+            <input type="radio" id="check4q2" name="check4" value="2">  <%= r[3].option2 %><br>
+            <input type="radio" id="check4q3" name="check4" value="3">  <%= r[3].option3 %><br>
+            <input type="radio" id="check4q4" name="check4" value="4">  <%= r[3].option4 %><br>
+          </div>
+        </li>
+        <li class='plug-pop' data-pop='event:click;time:300;class:active;trigger:.nav-list-5'>
+          <p>Question5</p>
+          <div class='nav-list-5'>
+            <p><%= r[4].question %></p>
+            <input type="radio" id="check5q1" name="check5" value="1">  <%= r[4].option1 %><br>
+            <input type="radio" id="check5q2" name="check5" value="2">  <%= r[4].option2 %><br>
+            <input type="radio" id="check5q3" name="check5" value="3">  <%= r[4].option3 %><br>
+            <input type="radio" id="check5q4" name="check5" value="4">  <%= r[4].option4 %><br>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="df"></div>
+    <div class="dfw">
+      <div class="windmill__windmill">
+      <div class="windmill__blades">
+        <div class="windmill__blade"></div>
+        <div class="windmill__blade"></div>
+        <div class="windmill__blade"></div>
+        <div class="windmill__blade"></div>
+      </div>
+    </div>
+    </div>
+
+    <div class="fbI">
+      <a id="submit" class="fillButtion">Submit</a>
+    </div>
+
+    </fieldset>
+    </div>
+
+    <canvas id="bg"></canvas>
+
+    <script type="text/javascript" src="javascripts/Popup.js"></script>
+    <script type="text/javascript" src="javascripts/bg.js"></script>
+  </body>
+
+  <script type="text/javascript">
+  $(function(){ 
+    $("#submit").click(function(){
+
+      var id = 1;
+      var answ1 = 0;
+      var answ2 = 0;
+      var answ3 = 0;
+      var answ4 = 0;
+      var answ5 = 0;
+      answ1 = $('input[name="check1"]:checked').val();
+      answ2 = $('input[name="check2"]:checked').val();
+      answ3 = $('input[name="check3"]:checked').val();
+      answ4 = $('input[name="check4"]:checked').val();
+      answ5 = $('input[name="check5"]:checked').val();
+
+      var data = {"qaid":id, "answ1":answ1, "answ2":answ2, "answ3":answ3, "answ4":answ4, "answ5":answ5};
+      $.ajax({ 
+        url:'/fill',
+        type:'post',
+        data: data,
+        success: function(data,status){ 
+          if(status == 'success'){ 
+            console.log(data);
+            location.href = '/';
+          }
+        },
+        error: function(data,status){ 
+          if(status == 'error'){ 
+            alert("Something wrong!");
+            location.href = 'fill';
+          }
+        }
+      });
+    });
+  });
+  </script>
+
+<%- include footer %>
+

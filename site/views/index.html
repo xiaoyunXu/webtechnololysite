@@ -1,0 +1,145 @@
+<%- include header %>
+  <body>
+  <link rel="stylesheet" href="stylesheets/styleIndex.css">
+  <!-- make and fill panel -->
+    <div class="panels">
+      <div class="panel panel1">
+        <a>Questionaire</a>
+        <a href="/make">Make</a>
+        <a>Five questions!</a>
+      </div>
+      <div class="panel panel2">
+        <a>Fill in!</a>
+        <a href="/fill">Fill</a>
+        <a>Five question!</a>
+      </div>
+    </div>
+
+    <div class="mask" id="mask" onselectstart="return false"></div>
+
+    <!-- login box -->
+    <div id="box" class="box">
+      <p id="boxT" class="box-title">Login
+        <a class="title-close" onclick="hideloginBox()"></a>
+      </p>
+      <div class="box-content">
+        <div class="box-padtop box-l40">
+          <input id="lusername" class="box-input" type="input" placeholder="Username" required="required">
+        </div>
+
+        <div class="box-padtop box-l40">
+          <input id="lpassword" class="box-input" type="input" placeholder="Password" required="required">
+        </div>
+
+        <div class="box-padtop">
+          <a id="lsubmit" class="box-submit" onclick="LoginSubmit()">Login</a>
+        </div>
+        <div class="box-re">
+          <a onclick="showRegisterBox()">Register</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- register box -->
+    <div id="boxR" class="box">
+      <p id="boxRtitle" class="box-title">Register
+        <a class="title-close" onclick="hideRegisterBox()"></a>
+      </p>
+
+      <div class="box-content">
+        <div class="box-padtop box-l40">
+          <input id="rusername" class="box-input" type="input" placeholder="Username">
+        </div>
+
+        <div class="box-padtop box-l40">
+          <input id="rpassword" class="box-input" type="input" placeholder="Password">
+        </div>
+
+        <div class="box-padtop box-l40">
+          <input id="rconfirm" class="box-input" type="input" placeholder="Confirm Password">
+        </div>
+
+        <div class="box-padtop">
+          <a id="resubmit" class="box-submit" onclick="RegisterSubmit()">Register</a>
+        </div>
+
+        <div class="box-re">
+          <a onclick="showloginBox()">Login</a>
+        </div>
+
+      </div>
+
+    </div>
+    <canvas id="bg"></canvas>
+  </body>
+  <script type="text/javascript" src="javascripts/bg.js"></script>
+  <script type="text/javascript" src="javascripts/Drag.js"></script>
+  <script type="text/javascript">
+
+    var RorL = "<%= rorl %>";
+    
+    if(RorL == 1){
+      document.getElementById("box").style.display = "none";
+    }else{
+      document.getElementById("boxR").style.display = "none";
+    }
+    function LoginSubmit(){
+      var username = $("#lusername").val();
+      var password = $("#lpassword").val();
+      if(username == "" || password == ""){
+        alert("Please fill in the login field!");
+        return;
+      }
+      var data = {"uname":username,"upwd":password};
+      $.ajax({ 
+        url:'/login',
+        type:'post',
+        data: data,
+        success: function(data,status){ 
+          if(status == 'success'){ 
+            location.href = 'home';
+          }
+        },
+        error: function(data,status){ 
+          if(status == 'error'){ 
+            alert("Unable to verify username or password!");
+            location.href = '/';
+          }
+        }
+      });
+    };
+    function RegisterSubmit(){
+      var username = $("#rusername").val();
+      var password = $("#rpassword").val();
+      var password2 = $("#rconfirm").val();
+
+      if(username == "" || password == "" || password2 == ""){
+        alert("Please fill in the register field!");
+        return;
+      }
+
+      if(password !== password2){ 
+        $("#rpassword").css("border","1px solid red");
+        $("#rconfirm").css("border","1px solid red");
+      }else if(password === password2){
+        var data = {"uname":username,"upwd":password};
+        $.ajax({ 
+          url: '/register',
+          type: 'post',
+          data: data,
+          success: function(data,status){ 
+            if(status == 'success'){ 
+                location.href = '/';
+            }
+          },
+          error: function(data,err){ 
+            alert("Error or Same account exists!");
+            location.href = '/';
+          }
+        }); 
+      }
+    };
+  </script>
+
+
+<%- include footer %>

@@ -1,0 +1,160 @@
+<%- include header %>
+  <style type="text/css">
+  .p {
+    height: 110vh;
+    overflow: hidden;
+    display: flex;
+    width:1000px;
+    margin: auto;
+    position: absolute;
+    top: 90px;
+    left: 0;
+    right: 0;
+    box-shadow: #6666 0px 0px 5px;
+    background: white;
+  }
+  .makePad{
+    padding-top: 25px;
+  }
+  .titlm{
+    width: 100%;
+    text-align: center;
+    color: rgb(60,133,247);
+    margin: 20px;
+  }
+  .tf{
+    font-weight: 300;
+  }
+  .makeCt{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    left: 0;
+    padding-top: 75px;
+    font-weight: 300;
+  }
+  .makeIdiv{
+    margin: 30px;
+    height: 50%;
+    width: 80%;
+    line-height: 150%;
+    text-align: left;
+    color: rgb(60,133,247);
+    font-size: 20px;
+    padding: 10px;
+    box-shadow: #6666 0px 0px 5px;
+  }
+  .makeIdiv:hover{
+    border:1px solid #a1a1a1;
+  }
+  .makeInput{
+    width: 100%;
+    height: 40px;
+    color: #4F4F4F;
+    font-style: italic;
+    font-weight: 200;
+  }
+  .makeInput:focus{
+    outline:none;
+    border: 1px solid rgb(60,133,247);
+  }
+  .mbI{
+    padding-top: 15px;
+    margin: 10px;
+  }
+  .makeButtion{
+    position: absolute;
+    left: 55%;
+    width: 250px;
+    height: 40px;
+    background: rgb(60,133,247);
+    color: white;
+    text-align: center;
+    padding-top: 3px;
+    font-size: 25px;
+    border-radius:5px;
+  }
+  .makeButtion:hover{
+    background: #3f81b0;
+  }
+  .makeInput::-webkit-input-placeholder{
+    color: black;
+    opacity: 0.2;
+  }
+  </style>
+
+  <body>
+
+    <div class="p">
+      <div class="titlm">
+        <h1 class="tf">Please enter your question!</h1>
+      </div>
+      
+      
+      <div class="makeCt">
+        
+        <div class="makePad makeIdiv">
+          Question:  <input type="text" class="makeInput" id="Question" name="Question" placeholder="Enter your question">
+        </div>
+
+        <div class="makePad makeIdiv">
+          Option1:    <input type="text" class="makeInput" id="option1" name="option1" placeholder="Enter an option">
+        </div>
+
+        <div class="makePad makeIdiv">
+          Option2:    <input type="text" class="makeInput" id="option2" name="option2" placeholder="Enter an option">
+        </div>
+
+        <div class="makePad makeIdiv">
+          Option3:    <input type="text" class="makeInput" id="option3" name="option3" placeholder="Enter an option">
+        </div>
+
+        <div class="makePad makeIdiv">
+          Option4:    <input type="text" class="makeInput" id="option4" name="option4" placeholder="Enter an option">
+        </div>
+          
+        <div class="mbI">
+            <a id="submit" class="makeButtion">Submit</a>
+        </div>
+
+      </div>
+
+    </div>
+    <canvas id="bg"></canvas>
+  </body>
+
+  <script type="text/javascript" src="javascripts/bg.js"></script>
+  <script type="text/javascript">
+  $(function(){ 
+    $("#submit").click(function(){ 
+      var question = $("#Question").val();
+      var option1 = $("#option1").val();
+      var option2 = $("#option2").val();
+      var option3 = $("#option3").val();
+      var option4 = $("#option4").val();
+      if(question=="" || option1=="" || option2=="" || option3=="" || option4==""){
+        alert("Please fill in the space");
+        return;
+      }
+      var data = {"ques":question,"option1":option1,"option2":option2,"option3":option3,"option4":option4};
+      $.ajax({ 
+        url:'/make',
+        type:'post',
+        data: data,
+        success: function(data,status){ 
+          if(status == 'success'){ 
+            alert("success!");
+            location.href = 'make';
+          }
+        },
+        error: function(data,status){ 
+          if(status == 'error'){ 
+            alert("5 questions maximum!");
+            location.href = 'make';
+          }
+        }
+      });
+    });
+  });
+  </script>
+<%- include footer %>

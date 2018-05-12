@@ -1,0 +1,75 @@
+<%- include header %>
+
+  <body>
+    <style type="text/css">
+      .titlH{
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        color: rgb(60,133,247);
+        /*margin: 20px;*/
+      }
+      .tH{
+        font-weight: 300;
+      }
+      .chartC{
+        position: absolute;
+        margin: 20px;
+        padding-top: 100px;
+      }
+    </style>
+
+    <div class="panels">
+      <div class="titlH">
+        <h1 class="tH">Results!</h1>
+      </div>
+      <div class="chartC">
+        <div id="areaChart" style="height: 350px; width: 900px; margin: 0 auto;"></div>
+      </div>
+
+    </div>
+
+      
+
+    <canvas id="bg"></canvas>
+    
+  </body>
+
+  <script type="text/javascript">
+    var data = [];
+    var cate = [];
+    cate.push(["<%= cate[0].option1 %>","<%= cate[0].option2 %>","<%= cate[0].option3 %>","<%= cate[0].option4 %>","<%= cate[0].question %>"]);
+    cate.push(["<%= cate[1].option1 %>","<%= cate[1].option2 %>","<%= cate[1].option3 %>","<%= cate[1].option4 %>","<%= cate[1].question %>"]);
+    cate.push(["<%= cate[2].option1 %>","<%= cate[2].option2 %>","<%= cate[2].option3 %>","<%= cate[2].option4 %>","<%= cate[2].question %>"]);
+    cate.push(["<%= cate[3].option1 %>","<%= cate[3].option2 %>","<%= cate[3].option3 %>","<%= cate[3].option4 %>","<%= cate[3].question %>"]);
+    cate.push(["<%= cate[4].option1 %>","<%= cate[4].option2 %>","<%= cate[4].option3 %>","<%= cate[4].option4 %>","<%= cate[4].question %>"]);
+
+    data.push(["<%= data[0].option1 %>","<%= data[1].option1 %>","<%= data[2].option1 %>","<%= data[3].option1 %>","<%= data[4].option1 %>"]);
+    data.push(["<%= data[0].option2 %>","<%= data[1].option2 %>","<%= data[2].option2 %>","<%= data[3].option2 %>","<%= data[4].option2 %>"]);
+    data.push(["<%= data[0].option3 %>","<%= data[1].option3 %>","<%= data[2].option3 %>","<%= data[3].option3 %>","<%= data[4].option3 %>"]);
+    data.push(["<%= data[0].option4 %>","<%= data[1].option4 %>","<%= data[2].option4 %>","<%= data[3].option4 %>","<%= data[4].option4 %>"]);
+
+  </script>
+
+  <script src='javascripts/highcharts.js'></script>
+  <script src='javascripts/chartHome.js'></script>
+  <script type="text/javascript" src="javascripts/bg.js"></script>
+  <script type="text/javascript">
+
+
+    // $('#areaChart').val(dc);
+
+    // console.log($('#areaChart').val());
+
+
+    $('#headlogin').val("xxy");
+
+    function Loginfunction(){
+      location.href = '/login';
+    }
+    function Registerfunction(){
+      location.href = '/register';
+    }   
+  </script>
+<%- include footer %>
+
