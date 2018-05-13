@@ -4,7 +4,11 @@ var User=require('../database/dbHandel');
 
 /* GET index page. */
 router.get('/', function(req, res,next) {
-  res.render('index', { title: 'Main page' ,rorl:0});    // 到达此路径则渲染index文件，并传出title值供 index.html使用
+	if(!req.session.user){
+		res.render('index', { title: 'Main page' ,rorl:0});
+	}else{
+		res.render('index', { title: 'Main page' ,rorl:2});
+	}
 });
 
 /* GET login page. */
@@ -67,24 +71,22 @@ router.route("/register").get(function(req,res){    // 到达此路径则渲染r
 router.get("/home",function(req,res){ 
 	if(!req.session.user){ 					//到达/home路径首先判断是否已经登录
 		req.session.error = "Please Login!";
-		res.redirect("/login");				//未登录则重定向到 /login 路径
+		res.redirect("/");				//未登录则重定向到 /login 路径
+	}else{
+		var uname = req.session.islogin;
+
+		client = User.connect();
+
+		User.selectQues(client,uname, 1,function(result1){
+			User.selectRe(client, uname, 1, function(result2){
+				if(result1.length !=0 && result2.length != 0){
+					res.render("home",{title:'Home', cate:result1, data:result2});         //已登录则渲染home页面
+				}else{
+					res.redirect("/make");
+				}
+			});
+		});	
 	}
-	var uname = req.session.islogin;
-
-	client = User.connect();
-
-	User.selectQues(client,uname, 1,function(result1){
-		User.selectRe(client, uname, 1, function(result2){
-			if(result1.length !=0 && result2.length != 0){
-				res.render("home",{title:'Home', cate:result1, data:result2});         //已登录则渲染home页面
-			}else{
-				res.redirect("/make");
-			}
-		});
-	});
-
-
-	
 });
 
 /* GET logout page. */

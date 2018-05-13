@@ -79,12 +79,21 @@
     .title-close{
       width:16px;height: 16px;
       position: absolute;right: 20px;
-      top: 23px;
-      background:url(../images/close_def.png) no-repeat;cursor: pointer;
+      top: 20px;
+      background:url(../images/close.png) no-repeat;cursor: pointer;
+      background-size: 16px 16px;
     }
     .title-close:hover{
       background:url(../images/close_hov.png);
+      background-size: 16px 16px;
     }
+/*    .close-title{
+      position: absolute;
+      right: 20px;
+      top: 23px;
+      width:16px; height:16px} 
+    .close-title img{width:16px; height:16px} 
+    */
     .box-content{
       padding-top: 15px 20px;
     }

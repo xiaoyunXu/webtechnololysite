@@ -80,8 +80,11 @@
     
     if(RorL == 1){
       document.getElementById("box").style.display = "none";
-    }else{
+    }else if(RorL == 0){
       document.getElementById("boxR").style.display = "none";
+    }else{
+      document.getElementById("box").style.display = "none";
+      hideRegisterBox();
     }
     function LoginSubmit(){
       var username = $("#lusername").val();
