@@ -15,10 +15,10 @@
       </div>
     </div>
 
-    <div class="mask" id="mask" onselectstart="return false"></div>
+    <div class="mask" id="mask" onselectstart="return false"  style="display: none;"></div>
 
     <!-- login box -->
-    <div id="box" class="box">
+    <div id="box" class="box"  style="display: none;">
       <p id="boxT" class="box-title">Login
         <a class="title-close" onclick="hideloginBox()"></a>
       </p>
@@ -41,7 +41,7 @@
     </div>
 
     <!-- register box -->
-    <div id="boxR" class="box">
+    <div id="boxR" class="box" style="display: none;">
       <p id="boxRtitle" class="box-title">Register
         <a class="title-close" onclick="hideRegisterBox()"></a>
       </p>
@@ -77,14 +77,10 @@
   <script type="text/javascript">
 
     var RorL = "<%= rorl %>";
-    
     if(RorL == 1){
-      document.getElementById("box").style.display = "none";
+      showRegisterBox();
     }else if(RorL == 0){
-      document.getElementById("boxR").style.display = "none";
-    }else{
-      document.getElementById("box").style.display = "none";
-      hideRegisterBox();
+      Loginfunction();
     }
     function LoginSubmit(){
       var username = $("#lusername").val();
