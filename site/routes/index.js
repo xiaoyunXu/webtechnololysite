@@ -68,10 +68,10 @@ router.route("/register").get(function(req,res){    // 到达此路径则渲染r
 });
 
 /* GET home page. */
-router.get("/home",function(req,res){ 
-	if(!req.session.user){ 					//到达/home路径首先判断是否已经登录
+router.route("/home").get(function(req,res){ 
+	if(!req.session.user){
 		req.session.error = "Please Login!";
-		res.redirect("/");				//未登录则重定向到 /login 路径
+		res.redirect("/");
 	}else{
 		var uname = req.session.islogin;
 
@@ -86,6 +86,22 @@ router.get("/home",function(req,res){
 				}
 			});
 		});	
+	}
+}).post(function(req,res){
+	if(req.body.delete){
+		var uname = req.session.islogin;
+		client = User.connect();
+		User.deleteQ(client, uname, 1, function(err){
+			if(err) throw err;
+			else{
+				User.deleteR(client, uname, 1, function(err){
+					if(err) throw err;
+					else{
+						res.sendStatus(200);
+					}
+				});
+			}
+		});
 	}
 });
 
@@ -103,7 +119,11 @@ router.get("/logout",function(req,res){    // 到达 /logout 路径则登出， 
 
 /* GET make page. */
 router.route("/make").get(function(req,res){
-	res.render("make",{title:'User Making'});
+	if(!req.session.user){
+		res.redirect("/login");
+	}else{
+		res.render("make",{title:'User Making'});
+	}
 }).post(function(req,res){ 
 	client = User.connect();
 	var uname = req.session.islogin;

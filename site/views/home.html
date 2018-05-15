@@ -17,6 +17,26 @@
         margin: 20px;
         padding-top: 100px;
       }
+      .dbpos{
+        position: relative;
+        top: 550px;
+        left: 50%;
+      }
+      .deleteB{
+        position: absolute;
+        width: 250px;
+        height: 40px;
+        color: white;
+        background: rgb(60,133,247);
+        text-align: center;
+        border-radius:5px;
+        padding-top: 3px;
+        font-size: 25px;
+        border-radius:5px;
+      }
+      .deleteB:hover{
+        background: #3f81b0;
+      }
     </style>
 
     <div class="panels">
@@ -25,6 +45,10 @@
       </div>
       <div class="chartC">
         <div id="areaChart" style="height: 350px; width: 900px; margin: 0 auto;"></div>
+      </div>
+
+      <div class="dbpos">
+        <a class="deleteB" id="dButton">Delete</a>
       </div>
 
     </div>
@@ -49,6 +73,30 @@
     data.push(["<%= data[0].option3 %>","<%= data[1].option3 %>","<%= data[2].option3 %>","<%= data[3].option3 %>","<%= data[4].option3 %>"]);
     data.push(["<%= data[0].option4 %>","<%= data[1].option4 %>","<%= data[2].option4 %>","<%= data[3].option4 %>","<%= data[4].option4 %>"]);
 
+
+    $("#dButton").click(function(){
+
+      var id = 1;
+
+      var data = {"qaid":id,"delete":1};
+      $.ajax({ 
+        url:'/home',
+        type:'post',
+        data: data,
+        success: function(data,status){ 
+          if(status == 'success'){ 
+            console.log(data);
+            location.href = 'home';
+          }
+        },
+        error: function(data,status){ 
+          if(status == 'error'){ 
+            alert("Something wrong!");
+            location.href = 'home';
+          }
+        }
+      });
+    });
   </script>
 
   <script src='javascripts/highcharts.js'></script>
@@ -62,7 +110,7 @@
     // console.log($('#areaChart').val());
 
 
-    $('#headlogin').val("xxy");
+    $('#dButton').val("xxy");
 
     function Loginfunction(){
       location.href = '/login';

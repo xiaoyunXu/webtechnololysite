@@ -106,6 +106,28 @@ function selectRe(client,username, qa_id,callback){
     });
 }
 
+function deleteQ(client, username, qa_id, callback){
+    client.query('delete from table_2 where username ="'+username+'" and qa_id ="'+qa_id+'"', function(err,result){
+        if(err){
+            console.log("error:"+err.message);
+            return err;
+        }
+
+        callback(err);
+    });
+}
+
+function deleteR(client, username, qa_id, callback){
+    client.query('delete from table_3 where username ="'+username+'" and qa_id ="'+qa_id+'"', function(err,result){
+        if(err){
+            console.log("error:"+err.message);
+            return err;
+        }
+
+        callback(err);
+    });
+}
+
 exports.connect = connectServer;
 exports.selectFun  = selectFun;
 exports.insertFun = insertFun;
@@ -117,4 +139,6 @@ exports.updateOp2 = updateOp2;
 exports.updateOp3 = updateOp3;
 exports.updateOp4 = updateOp4;
 exports.selectRe = selectRe;
+exports.deleteQ = deleteQ;
+exports.deleteR = deleteR;
 
