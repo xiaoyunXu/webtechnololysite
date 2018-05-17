@@ -26,19 +26,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieParser("An"));
-//需要添加的
 app.use(session({
     secret:'an',
     resave:false,
     saveUninitialized:true
 }));
 
-app.use('/', routes);  // 即为为路径 / 设置路由
-app.use('/users', users); // 即为为路径 /users 设置路由
-app.use('/login',routes); // 即为为路径 /login 设置路由
-app.use('/register',routes); // 即为为路径 /register 设置路由
-app.use('/home',routes); // 即为为路径 /home 设置路由
-app.use('/logout',routes); // 即为为路径 /logout 设置路由
+app.use('/', routes);  
+app.use('/users', users); 
+app.use('/login',routes); 
+app.use('/register',routes);
+app.use('/home',routes);
+app.use('/logout',routes);
 app.use('/make',routes);
 app.use('/fill',routes);
 

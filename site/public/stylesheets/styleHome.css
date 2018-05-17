@@ -1,0 +1,35 @@
+.titlH{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: rgb(60,133,247);
+  /*margin: 20px;*/
+}
+.tH{
+  font-weight: 300;
+}
+.chartC{
+  position: absolute;
+  margin: 20px;
+  padding-top: 100px;
+}
+.dbpos{
+  position: relative;
+  top: 550px;
+  left: 50%;
+}
+.deleteB{
+  position: absolute;
+  width: 250px;
+  height: 40px;
+  color: white;
+  background: rgb(60,133,247);
+  text-align: center;
+  border-radius:5px;
+  padding-top: 3px;
+  font-size: 25px;
+  border-radius:5px;
+}
+.deleteB:hover{
+  background: #3f81b0;
+}

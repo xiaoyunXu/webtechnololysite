@@ -1,0 +1,102 @@
+body,html{height:100%;background-color: rgb(246,246,246);}
+
+.panels {
+  position: absolute;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  width:1000px;
+  margin: auto;
+  top: 90px;
+  left: 0;
+  right: 0;
+  box-shadow: #6666 0px 0px 5px;
+  background: white;
+}
+.he {
+  background-color:white;
+  color:white;
+  position:fixed;
+  width:100%;
+  height: 75px;
+  line-height: 5%;
+  top:0px;
+  left: 0px;
+  text-align:right;
+  z-index:999;
+  box-shadow: #6666 0px 0px 5px;
+}
+.ti{
+  font-weight: 300;
+	font-size: 3.5em;
+	padding-top: 0.75em;
+	text-align:center;
+	color:rgb(60,133,247);
+}
+.lr{
+  font-weight: 325;
+	font-size: 1.2em;
+	color:rgb(60,133,247);
+	padding:0.3em;
+}
+.flowerSvg{
+  position: fixed;
+  width: 75px;
+  height: 75px;
+  z-index: 1000;
+}
+.msg{
+  position: relative;
+  width: 300px;
+  height:100px;
+  background: rgb(60,133,247);
+  opacity:0;
+  z-index: 9999;
+  /*border-radius: 5px;*/
+  text-align: justify;
+  font-size: 20px;
+  font-weight: 250;
+  top:100px;
+  box-shadow: #666 0px 0px 5px;
+  left: 50px;
+  transform: scale3d(0.3,0.3,0.3);
+  word-wrap:break-word;
+  color: white; 
+}
+.msg.open{
+  transition: 
+    opacity 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11);
+  opacity: 0.7;
+  animation: mymove 1s;
+  animation-fill-mode: forwards;
+  -webkit-animation:mymove 1s; /*Safari and Chrome*/
+  -webkit-animation-fill-mode: forwards;
+}
+
+.msg p{
+  padding: 10px;
+}
+@keyframes mymove {
+/*     0%{
+    transform: scale3d(0.9,0.9,0.9);
+  }
+  75%{
+    transform: scale3d(1.2,1.2,1.2);
+  }*/
+  100%{
+    transform: scale3d(1,1,1);
+  }
+}
+/*Safari and Chrome*/
+@-webkit-keyframes mymove 
+{
+/*      0%{
+    transform: scale3d(0.9,0.9,0.9);
+  }
+  75%{
+    transform: scale3d(1.2,1.2,1.2);
+  }*/
+  100%{
+    transform: scale3d(1,1,1);
+  }
+}

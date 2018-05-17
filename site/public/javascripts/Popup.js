@@ -14,17 +14,17 @@
 		this._index = 0;//fadeIn or fadeOut.
 	}
 	Popup.prototype = {
-		//处理配置
+		//configuration
 		_config : function(option){
 			this._option = $.extend('deep',config,option);
 			this._init(this._option.trigger);
 			this._handle(this._option.event,this._option.time,this._option.class);
 		},
-		//初始化状态
+		//initialize
 		_init : function(trigger){
 			this._trigger = (trigger?$(trigger):$(this._ele).children()).css('display','none');
 		},
-		//事件处理
+		//handle events
 		_handle : function(event,time,name){
 			var This = this;
 			var eE = 'mouseleave';

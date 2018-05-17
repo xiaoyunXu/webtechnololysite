@@ -41,7 +41,7 @@ function selectQues(client, username, qaid, callback){
     });
 }
 
-//questionaire
+//insert questions
 function insertQues(client, username, qa_id, q_id, question, option1, option2, option3, option4, callback){
     client.query('insert into table_2 value(?,?,?,?,?,?,?,?)', [username, qa_id, q_id, question, option1, option2, option3, option4],function(err,result){
         if(err){
@@ -51,6 +51,7 @@ function insertQues(client, username, qa_id, q_id, question, option1, option2, o
         callback(err);
     });
 }
+//insert option
 function insertAnsw(client, username, qa_id, q_id, option1, option2, option3, option4, callback){
     client.query('insert into table_3 value(?,?,?,?,?,?,?)', [username, qa_id, q_id, option1, option2, option3, option4],function(err,result){
         if(err){
@@ -61,6 +62,7 @@ function insertAnsw(client, username, qa_id, q_id, option1, option2, option3, op
     });
 }
 
+//update results, add 1 to itself
 function updateOp1(client, username, qa_id, q_id, callback){
     client.query('update table_3 set option1 = option1 + 1 where username = "'+username+'" and qa_id = "'+qa_id+'" and q_id ="'+q_id+'"', function(err, results){
         if(err){
@@ -106,6 +108,7 @@ function selectRe(client,username, qa_id,callback){
     });
 }
 
+//delete the questionnaire
 function deleteQ(client, username, qa_id, callback){
     client.query('delete from table_2 where username ="'+username+'" and qa_id ="'+qa_id+'"', function(err,result){
         if(err){
@@ -116,7 +119,7 @@ function deleteQ(client, username, qa_id, callback){
         callback(err);
     });
 }
-
+//delete the result
 function deleteR(client, username, qa_id, callback){
     client.query('delete from table_3 where username ="'+username+'" and qa_id ="'+qa_id+'"', function(err,result){
         if(err){

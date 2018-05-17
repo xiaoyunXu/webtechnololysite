@@ -21,6 +21,7 @@ function Drag(){
   this.initialize.apply(this, arguments)
 }
 Drag.prototype = {
+
   initialize : function (drag, options){
     this.drag = this.$(drag);
     this._x = this._y = 0;
