@@ -56,6 +56,61 @@
       height: 75px;
       z-index: 1000;
     }
+    .msg{
+      position: relative;
+      width: 300px;
+      height:100px;
+      background: rgb(60,133,247);
+      opacity:0;
+      z-index: 9999;
+      /*border-radius: 5px;*/
+      text-align: justify;
+      font-size: 20px;
+      font-weight: 250;
+      top:100px;
+      box-shadow: #666 0px 0px 5px;
+      left: 50px;
+      transform: scale3d(0.3,0.3,0.3);
+      word-wrap:break-word;
+      color: white; 
+    }
+    .msg.open{
+      transition: 
+        opacity 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11);
+      opacity: 0.7;
+      animation: mymove 1s;
+      animation-fill-mode: forwards;
+      -webkit-animation:mymove 1s; /*Safari and Chrome*/
+      -webkit-animation-fill-mode: forwards;
+    }
+
+    .msg p{
+      padding: 10px;
+    }
+    @keyframes mymove {
+ /*     0%{
+        transform: scale3d(0.9,0.9,0.9);
+      }
+      75%{
+        transform: scale3d(1.2,1.2,1.2);
+      }*/
+      100%{
+        transform: scale3d(1,1,1);
+      }
+    }
+    /*Safari and Chrome*/
+    @-webkit-keyframes mymove 
+    {
+/*      0%{
+        transform: scale3d(0.9,0.9,0.9);
+      }
+      75%{
+        transform: scale3d(1.2,1.2,1.2);
+      }*/
+      100%{
+        transform: scale3d(1,1,1);
+      }
+    }
     </style>
 
     <div class="he">
@@ -70,5 +125,59 @@
       type="image/svg+xml"
       pluginspage="http://www.adobe.com/svg/viewer/install/" />
     </div>
+    <div id="msg" class="msg">
+      <p id="msgContent">how old are you? are you happy? good to see you!</p>
+    </div>
   </head>
+  <script type="text/javascript">
+
+    const msg = document.getElementById('msg');
+
+    var i = 500;
+    var sM = 1;
+    var int;
+    function autoRequest(serverUrl, itvl,sendMsg){
+
+      function msgShow(msgC){
+        msg.classList.toggle('open');
+        document.getElementById("msgContent").innerText = msgC;
+        setTimeout(function(){
+          msg.classList.toggle('open');
+        },3000);
+      }
+
+      function requestMsg(urlHeader){
+        console.log(urlHeader);
+        var data = {"clientMsg":sendMsg};
+        $.ajax({ 
+          url:urlHeader,
+          type:'post',
+          data: data,
+          success: function(data,status){ 
+            if(status == 'success'){
+              if(data.show == 1){
+                msgShow(data.content);
+                
+              }
+            }
+          },
+          error: function(data,status){ 
+            if(status == 'error'){
+              console.log("requestMsg : nothing");
+            }
+          }
+        });
+      }
+      
+      int = setInterval(function(){
+        requestMsg(serverUrl);
+      },itvl);
+    }
+    autoRequest("/message",i,sM);
+
+    setTimeout(function(){
+      clearInterval(int);
+    }, 3000);
+
+  </script>
 </header>

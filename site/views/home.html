@@ -60,6 +60,7 @@
   </body>
 
   <script type="text/javascript">
+
     var data = [];
     var cate = [];
     cate.push(["<%= cate[0].option1 %>","<%= cate[0].option2 %>","<%= cate[0].option3 %>","<%= cate[0].option4 %>","<%= cate[0].question %>"]);
@@ -91,7 +92,7 @@
         },
         error: function(data,status){ 
           if(status == 'error'){ 
-            alert("Something wrong!");
+            // alert("Something wrong!");
             location.href = 'home';
           }
         }
@@ -118,6 +119,7 @@
     function Registerfunction(){
       location.href = '/register';
     }   
+
   </script>
 <%- include footer %>
 

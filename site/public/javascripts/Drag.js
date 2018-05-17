@@ -1,3 +1,4 @@
+//panels animation
 const panels = document.querySelectorAll('.panel');
 
 function toggleOpen() {
@@ -14,6 +15,8 @@ function toggleActive(e) {
 panels.forEach(panel => panel.addEventListener('click', toggleOpen));
 panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
   
+
+//login and register box drag move
 function Drag(){
   this.initialize.apply(this, arguments)
 }
