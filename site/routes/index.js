@@ -104,6 +104,7 @@ router.route("/register").get(function(req,res){
 router.route("/home").get(function(req,res){ 
 	if(!req.session.user){
 		req.session.error = "Please Login!";
+		pushMessage("Please Login!");
 		res.redirect("/");
 	}else{
 		var uname = req.session.islogin;
