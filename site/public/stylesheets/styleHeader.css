@@ -100,3 +100,101 @@ body,html{height:100%;background-color: rgb(246,246,246);}
     transform: scale3d(1,1,1);
   }
 }
+.donutPos{
+  position: fixed;
+  width: 75px;
+  height: 75px;
+  z-index: 1000;
+  right: 250px;
+}
+.bicycle_frame{
+  position: fixed;
+  width: 75px;
+  height: 75px;
+  z-index: 1000;
+  left: 100px;
+  top: 10px;
+  animation: bifm 15s linear;
+  animation-fill-mode: forwards;
+  -webkit-animation:bifm 15s linear; /*Safari and Chrome*/
+  -webkit-animation-fill-mode: forwards;
+}
+@-webkit-keyframes bifm 
+{
+  0%{
+    left: 100px;
+  }
+  100%{
+    left: 900px;
+  }
+}
+@-webkit-keyframes bifm 
+{
+  0%{
+    left: 100px;
+  }
+  100%{
+    left: 900px;
+  }
+}
+
+.bicycle_wheel1{
+  position: fixed;
+  width: 29px;
+  height: 29px;
+  z-index: 1000;
+  left: 102px;
+  top: 44px;
+  animation: biwhone 15s linear;
+  animation-fill-mode: forwards;
+  -webkit-animation:biwhone 15s linear; /*Safari and Chrome*/
+  -webkit-animation-fill-mode: forwards;
+}
+@-webkit-keyframes biwhone 
+{
+  0%{
+    left: 102px;
+  }
+  100%{
+    left: 902px;
+  }
+}
+@-webkit-keyframes biwhone 
+{
+  0%{
+    left: 102px;
+  }
+  100%{
+    left: 902px;
+  }
+}
+.bicycle_wheel2{
+  position: fixed;
+  width: 29px;
+  height: 29px;
+  z-index: 1000;
+  left: 158px;
+  top: 44px;
+  animation: biwhtwo 15s linear;
+  animation-fill-mode: forwards;
+  -webkit-animation:biwhtwo 15s linear; /*Safari and Chrome*/
+  -webkit-animation-fill-mode: forwards;
+}
+@-webkit-keyframes biwhtwo 
+{
+  0%{
+    left: 158px;
+  }
+  100%{
+    left: 958px;
+  }
+}
+@-webkit-keyframes biwhtwo 
+{
+  0%{
+    left: 158px;
+  }
+  100%{
+    left: 958px;
+  }
+}
