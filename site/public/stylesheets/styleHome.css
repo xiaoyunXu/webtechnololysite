@@ -33,3 +33,8 @@
 .deleteB:hover{
   background: #3f81b0;
 }
+.chartDiv{
+  height: 350px; 
+  width: 900px; 
+  margin: 0 auto;
+}
