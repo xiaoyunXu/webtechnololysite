@@ -1,7 +1,6 @@
 <%- include header %>
 
   <body>
-
   <!-- make and fill panel -->
     <div class="panels">
       <div class="panel panel1">
@@ -17,7 +16,7 @@
 
     </div>
 
-    <div class="mask" id="mask" onselectstart="return false"  style="display: none;"></div>
+    <div class="mask" id="mask" style="display: none;"></div>
 
     <!-- login box -->
     <div id="box" class="box"  style="display: none;">
@@ -74,10 +73,12 @@
     </div>
     <canvas id="bg"></canvas>
   </body>
-  <script type="text/javascript" src="javascripts/bg.js" />
-  <script type="text/javascript" src="javascripts/Drag.js"></script>
-  <script type="text/javascript">
+  <script type="text/javascript" src="javascripts/bg.js">
+  </script>
+  <script type="text/javascript" src="javascripts/Drag.js">
+  </script>
 
+  <script type="text/javascript">
     var RorL = "<%= rorl %>";
     if(RorL == 1){
       showRegisterBox();
