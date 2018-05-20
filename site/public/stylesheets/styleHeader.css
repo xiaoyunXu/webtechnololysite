@@ -119,7 +119,7 @@ body,html{height:100%;background-color: rgb(246,246,246);}
   -webkit-animation:bifm 15s linear; /*Safari and Chrome*/
   -webkit-animation-fill-mode: forwards;
 }
-@-webkit-keyframes bifm 
+@keyframes bifm 
 {
   0%{
     left: 100px;
@@ -150,7 +150,7 @@ body,html{height:100%;background-color: rgb(246,246,246);}
   -webkit-animation:biwhone 15s linear; /*Safari and Chrome*/
   -webkit-animation-fill-mode: forwards;
 }
-@-webkit-keyframes biwhone 
+@keyframes biwhone 
 {
   0%{
     left: 102px;
@@ -180,7 +180,7 @@ body,html{height:100%;background-color: rgb(246,246,246);}
   -webkit-animation:biwhtwo 15s linear; /*Safari and Chrome*/
   -webkit-animation-fill-mode: forwards;
 }
-@-webkit-keyframes biwhtwo 
+@keyframes biwhtwo 
 {
   0%{
     left: 158px;
